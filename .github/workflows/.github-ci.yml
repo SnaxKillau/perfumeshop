@@ -1,0 +1,50 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK and Gradle
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Setup Gradle
+      run: |
+        echo "gradle-8.0-bin.zip" > gradle-wrapper.properties
+        ./gradlew wrapper --gradle-version=8.0
+
+    - name: Build and package APK
+      run: |
+        tag=${{ github.ref }}
+        build_type='release'
+
+        if [[ $tag == 'refs/tags/uat'* ]]; then
+          flavor='uat'
+        else
+          flavor='prd'
+        fi
+
+        ./gradlew "assemble${flavor}${build_type}"
+
+        apkDir="app/build/outputs/apk/${flavor}/${build_type}"
+        apkMetaFile="$apkDir/output-metadata.json"
+        apkFile=$(cat $apkMetaFile | jq -r '.elements[0].outputFile')
+        cp "$apkDir/$apkFile" "perfume-shop.apk"
+
+    - name: Upload artifact
+      if: startsWith(github.ref, 'refs/tags/') && contains(github.ref, 'uat-') || contains(github.ref, 'prd-')
+      uses: actions/upload-artifact@v2
+      with:
+        name: perfume-shop
+        path: perfume-shop.apk
