@@ -44,9 +44,11 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:paddingStart="10dp"
+        android:layout_marginHorizontal="20dp"
         android:id="@+id/txtFName"
         android:layout_width="match_parent"
         android:background="@drawable/shape_background"
+        android:hint="First Name Input"
         android:layout_height="50dp"/>
 
     <View
@@ -74,8 +76,11 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/txtEmail"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:background="@drawable/shape_background"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Email Input"
         android:layout_height="50dp"/>
     <View
         android:layout_marginTop="10dp"
@@ -88,18 +93,15 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
+            android:layout_marginRight="10dp"
             android:layout_height="55dp"
             android:background="@drawable/buttons"
             android:text="Cancel"/>
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"/>
-
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="55dp"
