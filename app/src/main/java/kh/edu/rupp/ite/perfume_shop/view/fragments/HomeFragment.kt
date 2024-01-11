@@ -46,45 +46,8 @@ class HomeFragment: Fragment() {
                 Status.ERROR -> Toast.makeText(requireContext(), "Error while loading data from server", Toast.LENGTH_LONG).show()
             }
         }
-
-
-//        loadProductsFromApi();
-
     }
-//    fun loadProductsFromApi(){
-//        val gson = GsonBuilder()
-//            .setLenient()
-//            .create()
-//        val httpClient = Retrofit.Builder()
-//            .baseUrl("http://10.0.2.2:8080")
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-//            .build()
-//        val productApiService:ProductApiService = httpClient.create(ProductApiService::class.java);
-//        val task:Call<List<Product>> = productApiService.loadProductList();
-//
-//
-//
-//
-//        task.enqueue(object : Callback<List<Product>> {
-//            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-//
-//                if (response.isSuccessful) {
-//                    showProductsList(response.body());
-//                } else {
-//                    Toast.makeText(context, "Load products list failed!", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-//                Log.e(
-//                    "[ProductFragment]", "Load products Fail" +
-//                            ": " + t.message
-//                )
-//                t.printStackTrace();
-//            }
-//        })
-//
-//    }
+
     fun showProductsList(productList: List<Product>?){
 
 
