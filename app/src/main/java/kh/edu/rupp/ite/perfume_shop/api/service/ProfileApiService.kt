@@ -1,20 +1,29 @@
 package kh.edu.rupp.ite.perfume_shop.api.service
 
-import kh.edu.rupp.ite.perfume_shop.api.model.Profile
-import kh.edu.rupp.ite.perfume_shop.api.model.Register
+import kh.edu.rupp.ite.perfume_shop.api.model.ProfileResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface ProfileApiService {
 
+interface ProfileApiService {
+    @GET("/api/profile")
+    fun profile(): Call<ProfileResponse>
 
     @FormUrlEncoded
-
-    @GET("/api/profile")
-    suspend fun profile(
-        @Field("name") name: String,
+    @POST("/api/updateProfile")
+    suspend fun login(
         @Field("email") email: String,
-    ): Profile
+        @Field("password") password: String
+    );
+    @FormUrlEncoded
+    @POST("/api/updateProfile")
+    suspend fun update(
+        @Field("email") email: String,
+        @Field("name") name: String
+    );
+    @POST("/api/logout")
+    suspend fun logout();
 }

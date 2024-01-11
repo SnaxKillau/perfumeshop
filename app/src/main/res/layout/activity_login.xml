@@ -91,8 +91,19 @@
             android:layout_marginTop="15dp"
             android:textStyle="bold"
             android:textColor="@color/purple_200"
-            android:id="@+id/loginButton"
             android:text="New user? Register Now "/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="120dp"
+            android:background="@drawable/buttons"
+            android:layout_height="40dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="SIGN UP"
+            />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

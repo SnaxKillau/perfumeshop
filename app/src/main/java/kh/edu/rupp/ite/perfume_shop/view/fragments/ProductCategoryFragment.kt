@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import kh.edu.rupp.ite.perfume_shop.adapter.ProductAdapter
 import kh.edu.rupp.ite.perfume_shop.adapter.ProductCategoryAdapter
+import kh.edu.rupp.ite.perfume_shop.api.model.Product
 import kh.edu.rupp.ite.perfume_shop.api.model.ProductCategory
 import kh.edu.rupp.ite.perfume_shop.api.model.Status
 import kh.edu.rupp.ite.perfume_shop.databinding.FragementCategoryProductsBinding
@@ -77,7 +77,13 @@ class ProductCategoryFragment: Fragment {
         val  productCategoryAdapter: ProductCategoryAdapter = ProductCategoryAdapter();
         Log.d("List" , product[0].products.toString())
         Log.d("ProductAdapter", "Product list size: ${product[0].products.size}")
+        productCategoryAdapter.onProductsClickListener = {index:Int , product: Product ->
+            Log.d("fragmentNumb" , index.toString());
+            mainActivity.changeFragment(ProductDetailFragment(product.id.toInt() , CategoriesFragment()));
+
+        }
         productCategoryAdapter.submitList(product[0].products);
+
 
         binding.recyclerView.adapter = productCategoryAdapter;
     }

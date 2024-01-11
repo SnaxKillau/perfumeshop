@@ -23,6 +23,10 @@ class LoginActivity(): BaseActivity() {
         setContentView(binding.root)
         loginViewModel = LoginViewModel();
         binding.loginbut.setOnClickListener { startMainActivity() }
+        binding.register.setOnClickListener{
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun startMainActivity() {
@@ -30,6 +34,7 @@ class LoginActivity(): BaseActivity() {
         val email = binding.email.text.toString();
         Log.d("email", email);
         val password = binding.password.text.toString();
+
         lifecycleScope.launch {
             val loginSuccessful =
                 loginViewModel.login(email, password, AppCore.get().applicationContext)
