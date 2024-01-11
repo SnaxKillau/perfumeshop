@@ -38,6 +38,16 @@
         <activity android:name=".view.activity.LoginActivity">
 
         </activity>
+        <activity android:name=".view.activity.ProfileActivity">
+
+        </activity>
+        <activity android:name=".view.activity.EditActivity">
+
+        </activity>
+
+
+
+
 
     </application>
 
